@@ -52,7 +52,7 @@ pipeline {
                 sh 'docker container stop jayce-springboot || echo "this container does not exist" '
                 sh 'echo y | docker container prune '
 
-                sh "docker run --name jayce-springboot --rm --network dev -p 8080:8080 -d alviss2510/springboot"
+                sh "docker container run --name jayce-springboot --rm --network dev -p 8080:8080 -d alviss2510/springboot"
             }
         }
  
