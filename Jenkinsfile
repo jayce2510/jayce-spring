@@ -48,8 +48,8 @@ pipeline {
             steps {
                 echo 'Deploying and cleaning'
                 sh 'docker image pull alviss2510/springboot'
-                sh 'docker container stop jayce-springboot || echo "this container does not exist" '
                 sh 'docker network create dev || echo "this network exists"'
+                sh 'docker container stop jayce-springboot || echo "this container does not exist" '
                 sh 'echo y | docker container prune '
 
                 sh "docker run --name jayce-springboot --rm --network dev -p 8080:8080 -d alviss2510/springboot"
