@@ -2,10 +2,6 @@ pipeline {
 
     agent any
 
-    tools {
-        maven 'maven'
-    }
-
     environment {
         MYSQL_ROOT_LOGIN = credentials('mysql-root')
     }
