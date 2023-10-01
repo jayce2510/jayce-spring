@@ -38,9 +38,9 @@ pipeline {
                 sh 'echo y | docker container prune '
                 sh 'docker volume rm jayce-mysql-data || echo "no volume"'
 
-                sh "docker run --name jayce-mysql --rm --network dev -v jayce-mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_LOGIN_PSW} -e MYSQL_DATABASE=db_example -d mysql:8.0"
+                sh "docker run --name jayce-mysql --rm --network dev -v jayce-mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_LOGIN} -e MYSQL_DATABASE=db_example -d mysql:8.0"
                 sh 'sleep 15'
-                sh "docker exec -i jayce-mysql mysql --user=root --password=${MYSQL_ROOT_LOGIN_PSW} < script"
+                sh "docker exec -i jayce-mysql mysql --user=root --password=${MYSQL_ROOT_LOGIN} < script"
             }
         }
 
